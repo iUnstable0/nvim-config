@@ -1,0 +1,8 @@
+{
+  "github-nvim-theme": { "branch": "main", "commit": "1d11841d72ca906e562cfbd4d8a592813cc6e10f" },
+  "lazy.nvim": { "branch": "main", "commit": "14d76aac4bd3ff07c1fca074c210f28f766a931e" },
+  "neoconf.nvim": { "branch": "main", "commit": "08f146d53e075055500dca35e93281faff95716b" },
+  "neodev.nvim": { "branch": "main", "commit": "62515f64dfb196e8abe1263e17e2546559e41292" },
+  "nvim-web-devicons": { "branch": "master", "commit": "efbfed0567ef4bfac3ce630524a0f6c8451c5534" },
+  "which-key.nvim": { "branch": "main", "commit": "38b990f6eabf62014018b4aae70a97d7a6c2eb88" }
+}
