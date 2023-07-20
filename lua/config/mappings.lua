@@ -1,3 +1,5 @@
+-- local debugger = require("modules.debugger")
+
 vim.g.mapleader = " "
 
 local keymaps = {
@@ -13,7 +15,15 @@ local keymaps = {
 				},
 				keys = {
 					nh = "nohl", -- Remove highlight from search results
+
 					sx = "close", -- Close current split window
+
+					to = "tabnew", -- Open new tab
+					tx = "tabclose", -- Close current tab
+					tn = "tabn", -- Go to next tab
+					tp = "tabpr", -- Go to previous tab
+
+					sm = "MaximizerToggle", -- Toggle maximized window
 				},
 			},
 			{
@@ -42,19 +52,6 @@ local keymaps = {
 }
 
 local keymap = vim.keymap
-
-local function debug(table, stack)
-	stack = stack or 0
-
-	for k, v in pairs(table) do
-		if type(v) == "table" then
-			print(string.rep("  ", stack) .. k .. ":")
-			debug(v, stack + 1)
-		else
-			print(string.rep("  ", stack) .. k .. ": " .. v)
-		end
-	end
-end
 
 for mode, maps in pairs(keymaps) do
 	for maps_key, maps_value in pairs(maps) do
@@ -105,7 +102,7 @@ for mode, maps in pairs(keymaps) do
 										if new_advanced_map[advanced_key_key] then
 											new_map = new_advanced_map[advanced_key_key]
 
-											-- debug(new_map)
+											-- debugger.log(new_map)
 										end
 
 										-- for __, command in ipairs(command_template) do
@@ -141,7 +138,7 @@ for mode, maps in pairs(keymaps) do
 							end
 						end
 
-						-- debug(new_advanced_map)
+						-- debugger.log(new_advanced_map)
 
 						for _, advanced_map in pairs(new_advanced_map) do
 							table.insert(mapped_keys, {

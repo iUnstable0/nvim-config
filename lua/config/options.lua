@@ -123,6 +123,11 @@ Use the clipboard register '+' (|quoteplus|) for all yank,
 	feature, the unnamed register is used instead.
 ]]
 
+opt.iskeyword:append("-") --[[
+	Count '-' as a word character.
+	For example, "hello-world" will be treated as a single word.
+]]
+
 opt.termguicolors = true --[[
 Use this option to enable the use of 24-bit RGB colors in the
 	TUI.  When Vim was built without the |+termguicolors| feature, setting
