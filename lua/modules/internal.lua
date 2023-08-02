@@ -39,6 +39,18 @@ internal.populate_method = function(func)
 							return function(...)
 								return internal.populate_method(table.pop)(...)
 							end
+						elseif key == "merge" then
+							return function(...)
+								return internal.populate_method(table.merge)(...)
+							end
+						elseif key == "count_keys" then
+							return function(...)
+								return internal.populate_method(table.count_keys)(...)
+							end
+						elseif key == "is_dictionary" then
+							return function(...)
+								return internal.populate_method(table.is_dictionary)(...)
+							end
 						else
 							return rawget(array, key)
 						end

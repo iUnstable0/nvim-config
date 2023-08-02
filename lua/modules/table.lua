@@ -4,7 +4,7 @@ _table.is_dictionary = function(table_)
 	return type(table_) == "table" and not vim.tbl_islist(table_)
 end
 
-_table.count_dictionary = function(table_)
+_table.count_keys = function(table_)
 	local count = 0
 
 	for _, _ in pairs(table_) do
@@ -38,7 +38,7 @@ _table.concat = function(table_, separator)
 	return str
 end
 
-_table.inject = function(target, object)
+_table.merge = function(target, object)
 	if _table.is_dictionary(object) then
 		for key, value in pairs(object) do
 			target[key] = value

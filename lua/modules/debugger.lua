@@ -40,7 +40,7 @@ debugger.log = function(message, stack, nested, from_array)
 		local count = 0
 
 		for k, v in pairs(message) do
-			local dictionary_length = table.count_dictionary(message)
+			local dictionary_length = table.count_keys(message)
 
 			count = count + 1
 

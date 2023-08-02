@@ -34,13 +34,13 @@ for plugin, _ in vim.fs.dir(plugin_dir_path, { depth = 2 }) do
 					repository = plugin_path[1] .. "/" .. props.real_name
 				end
 
-				-- debugger.log(table.inject({
+				-- debugger.log(table.merge({
 				-- 	repository,
 				-- }, props.options))
 
 				table.insert(
 					plugins,
-					table.inject({
+					table.merge({
 						repository,
 					}, props.options)
 				)
@@ -71,13 +71,13 @@ end
 -- 							repository = plugin .. "/" .. props.real_name
 -- 						end
 
--- 						-- debugger.log(table.inject({
+-- 						-- debugger.log(table.merge({
 -- 						-- 	repository,
 -- 						-- }, props.options))
 
 -- 						table.insert(
 -- 							plugins,
--- 							table.inject({
+-- 							table.merge({
 -- 								repository,
 -- 							}, props.options)
 -- 						)
