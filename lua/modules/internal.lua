@@ -1,4 +1,5 @@
 local table = require("modules.table")
+local string = require("modules.string")
 
 local internal = {}
 
@@ -20,6 +21,9 @@ internal.populate_method = function(func)
 
 		-- 	return ...
 		-- end, "r")
+		-- for a, s in ipairs({ ... }) do
+		-- 	print("Call level experiemnet", a, s)
+		-- end
 
 		local result = { func(...) }
 
@@ -40,6 +44,41 @@ internal.populate_method = function(func)
 						end
 					end,
 				})
+			elseif type(param) == "string" then
+				local string_proxy = { value = param }
+
+				setmetatable(string_proxy, {
+					__tostring = function()
+						return param
+					end,
+					__concat = function(_, other)
+						return param .. other
+					end,
+					__index = function(_, key)
+						if key == "split" then
+							return function(...)
+								-- for a, s in ipairs({ ... }) do
+								-- 	print("ROot leve", a, type(s.value), s)
+								-- end
+
+								-- Modify the paramemeters to be passed to the fuinction
+								local parameters = { ... }
+
+								for _, parameter in ipairs(parameters) do
+									if type(parameter) == "table" then
+										parameters[_] = parameter.value
+									end
+								end
+
+								return internal.populate_method(string.split)(unpack(parameters))
+							end
+						else
+							return param
+						end
+					end,
+				})
+
+				result[_] = string_proxy
 			end
 		end
 

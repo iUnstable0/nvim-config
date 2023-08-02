@@ -1,10 +1,20 @@
 local _string = {}
 
 _string.split = function(str, separator)
-	local array = {}
+	separator = separator:gsub("([%.%+%-%%%?%[%]%^%$%*%(%)])", "%%%1")
 
-	for value in string.gmatch(str, "([^" .. separator .. "]+)") do
+	local pattern = "(.-)" .. separator
+	local array = {}
+	local last_part
+
+	for value in string.gmatch(str, pattern) do
 		table.insert(array, value)
+	end
+
+	last_part = string.match(str, separator .. "(.*)$")
+
+	if last_part and last_part ~= "" then
+		table.insert(array, last_part)
 	end
 
 	return array
