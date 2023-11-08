@@ -67,6 +67,10 @@ debugger.log = function(message, stack, nested, from_array)
 				print(string.rep("  ", stack - 1) .. _end)
 			end
 		end
+
+		if not nested then
+			print(" ")
+		end
 	else
 		for _, v in ipairs(message) do
 			if type(v) == "table" then
@@ -90,10 +94,14 @@ debugger.log = function(message, stack, nested, from_array)
 				print(string.rep("  ", stack - 1) .. "}")
 			end
 		end
-	end
 
-	if not nested then
-		print(" ")
+		if not nested then
+			print(" ")
+		end
+
+		if #message == 0 then
+			print(string.rep("  ", stack - 1) .. "}")
+		end
 	end
 end
 

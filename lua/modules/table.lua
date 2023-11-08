@@ -1,7 +1,33 @@
 local _table = {}
 
+_table.is_list = function(table_)
+	if type(table_) ~= "table" then
+		return false
+	end
+
+	-- local count = 0
+
+	-- for _, _ in pairs(table_) do
+	-- 	count = count + 1
+	-- end
+
+	-- for i = 1, count do
+	-- 	if table_[i] == nil then
+	-- 		return false
+	-- 	end
+	-- end
+
+	for key, _ in pairs(table_) do
+		if type(key) ~= "number" then
+			return false
+		end
+	end
+
+	return true
+end
+
 _table.is_dictionary = function(table_)
-	return type(table_) == "table" and not vim.tbl_islist(table_)
+	return type(table_) == "table" and not _table.is_list(table_)
 end
 
 _table.count_keys = function(table_)
