@@ -2,6 +2,70 @@
 
 vim.g.mapleader = " "
 
+--[[
+    **Easy Mode**
+
+    This mode is pretty self-explanatory. It maps a key to a value.
+
+    For example:
+
+    n = {
+        x = '"_x',
+    }
+
+    This is equivalent to:
+
+    keymap.set("n", "x", '"_x')
+
+    **Advanced Mode**
+
+    In the advanced mode, each key in the 'keys' dictionary will be appended to 'template[1]'.
+
+    The value in the 'keys' dictionary will be appended to 'template[2]', inserted between the strings in the array. If the string in the array is empty, the value will simply replace the empty string.
+
+    For example:
+
+    template = {
+        "<leader>",
+        { ":", "<CR>" },
+    },
+    keys = {
+        nh = "nohl"
+    }
+
+    This is equivalent to:
+
+    keymap.set(CURRENT_MODE, "<leader>nh", ":nohl<CR>")
+
+    A more advanced example:
+
+    template = {
+        "<leader>",
+        { "<C-", "", ">", "" },
+    },
+    keys = {
+        ["+"] = "a",
+
+        advanced = {
+            {
+                "w",
+                {
+                    sv = "v",
+                    sh = "s",
+                },
+            },
+        },
+    }
+
+    This is equivalent to:
+
+    keymap.set(CURRENT_MODE, "<leader>+", "<C-a>")
+    keymap.set(CURRENT_MODE, "<leader>sv", "<C-w>v")
+    keymap.set(CURRENT_MODE, "<leader>sh", "<C-w>s")
+
+    There are some flaws with this system, but I'll fix them later when I need to add more complex mappings.
+]]
+
 local keymaps = {
 	i = {},
 	n = {
