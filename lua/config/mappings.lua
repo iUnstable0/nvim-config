@@ -21,7 +21,8 @@ vim.g.mapleader = " "
 
     In the advanced mode, each key in the 'keys' dictionary will be appended to 'template[1]'.
 
-    The value in the 'keys' dictionary will be appended to 'template[2]', inserted between the strings in the array. If the string in the array is empty, the value will simply replace the empty string.
+    The value in the 'keys' dictionary will be appended to 'template[2]', inserted between the strings in the array.
+    If the string in the array is empty, the value will simply replace the empty string.
 
     For example:
 

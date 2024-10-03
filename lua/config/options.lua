@@ -19,7 +19,7 @@ Show line numbers relative to the line with the cursor in front of
 opt.wrap = false --[[
 This option changes how text is displayed.  It doesn't change the
 	text in the buffer, see |'textwidth'| for that.
-	
+
 	When on, lines longer than the width of the window will wrap and
 	display on the next line.  When off lines will not wrap and
 	only part of long lines will be displayed.  When the cursor is
