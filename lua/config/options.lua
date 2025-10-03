@@ -154,4 +154,6 @@ When on, splitting a window will put the new window below the
 -- cmd([[let &t_Cs = "\e[4:3m"]])
 -- cmd([[let &t_Ce = "\e[4:0m"]])
 
-cmd("colorscheme github_dark_dimmed")
+-- cmd("colorscheme catppuccin")
+
+cmd.colorscheme("catppuccin")
