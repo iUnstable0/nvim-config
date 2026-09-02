@@ -1,3 +1,4 @@
+-- Archived custom module. It is kept for reference and is not loaded by the active config.
 local internal = require("modules.internal")
 
 local core = {}

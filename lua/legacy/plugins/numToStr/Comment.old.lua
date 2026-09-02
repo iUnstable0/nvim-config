@@ -1,3 +1,4 @@
+-- Archived autodiscovery spec.
 return {
 	real_name = "Comment.nvim",
 	options = {

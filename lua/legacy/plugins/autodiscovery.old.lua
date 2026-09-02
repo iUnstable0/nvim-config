@@ -1,3 +1,4 @@
+-- Archived plugin autodiscovery. It is kept for reference and is not loaded by the active config.
 local core = require("modules.core")
 
 local debugger = core.load_module("debugger")

@@ -1,3 +1,4 @@
+-- Archived custom module. It is kept for reference and is not loaded by the active config.
 local _table = {}
 
 _table.is_list = function(table_)

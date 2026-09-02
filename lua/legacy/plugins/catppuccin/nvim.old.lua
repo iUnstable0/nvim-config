@@ -1,3 +1,4 @@
+-- Archived autodiscovery spec.
 return {
 	options = {
 		name = "catppuccin",

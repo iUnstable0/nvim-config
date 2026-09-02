@@ -1,23 +1,29 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+if not vim.uv.fs_stat(lazypath) then
+  local clone = vim.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--branch=stable",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
+  }, { text = true }):wait()
+
+  if clone.code ~= 0 then
+    error("Could not install lazy.nvim:\n" .. (clone.stderr or "unknown error"))
+  end
 end
-vim.opt.rtp:prepend(lazypath)
 
--- Example using a list of specs with the default options
-vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
+vim.opt.runtimepath:prepend(lazypath)
 
-vim.g.suda_smart_edit = 1
-
-require("config.mappings")
-
-require("lazy").setup("plugins")
-
-require("config.options")
+require("lazy").setup({
+  { import = "plugins.ui" },
+  { import = "plugins.navigation" },
+  { import = "plugins.editor" },
+}, {
+  defaults = { lazy = true },
+  install = { colorscheme = { "catppuccin", "habamax" } },
+  checker = { enabled = true, notify = false },
+  change_detection = { notify = false },
+  ui = { border = "rounded" },
+})
